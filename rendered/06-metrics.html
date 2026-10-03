@@ -1,0 +1,95 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>指标与复盘 · 实际输出</title><style>
+*{box-sizing:border-box}body{margin:0;color:#202a26;background:#f5f7f4;font:18px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}header{background:white;border-bottom:1px solid #dde4dc;padding:27px 64px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:15px;font-weight:650;letter-spacing:.5px}.date{font-size:13px;color:#6c786f}.wrap{max-width:1140px;margin:0 auto;padding:43px 40px 36px}.skill{font-family:ui-monospace,monospace;color:#2f6650;font-size:14px;margin-bottom:11px}h1{font-size:31px;line-height:1.5;letter-spacing:-.7px;margin:0 0 11px}.intro{font-size:16px;color:#69766d}.status{display:inline-block;padding:5px 11px;margin:16px 0 30px;background:#eaf1eb;color:#39604b;font-size:13px;border-radius:5px}.document{background:white;border:1px solid #dce3db;border-radius:8px;padding:31px 36px}.document>h1:first-child{display:none}.document h2{font-size:21px;line-height:1.5;margin:27px 0 13px}.document h3{font-size:18px;margin:23px 0 10px}.document p{margin:12px 0}.document a{color:#28634b;text-decoration:underline;text-decoration-color:#acc4b6;text-underline-offset:3px}.document strong{font-weight:650}.document pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:17px 0;background:#f5f7f4;border:1px solid #e5eae2;border-radius:5px;padding:19px 21px;font-size:15px;line-height:1.75}.document code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;color:#355d4b}.document pre code{font-size:1em;color:#273c30}.document table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px;line-height:1.8;table-layout:auto}.document th{text-align:left;background:#f3f6f1;font-size:14px;font-weight:600}.document th,.document td{border:1px solid #dfe5dc;padding:12px 14px;vertical-align:top}.document td:first-child{min-width:98px}.document ul,.document ol{padding-left:24px}.document li{margin:8px 0}.document blockquote{border-left:3px solid #8eb39b;margin:18px 0;padding:4px 20px;color:#4d6356}footer{font-size:12px;color:#738074;padding:18px 0 0;display:flex;justify-content:space-between;gap:20px}footer code{font-size:11px} @media(max-width:700px){header{padding:20px}.wrap{padding:25px 15px}h1{font-size:26px}.document{padding:18px}.document table{font-size:13px}.document th,.document td{padding:9px}.date{display:none}}
+</style></head><body>
+<header><span class="brand">产品经理六大 Skill · 实际输出</span><span class="date">2026-10-04</span></header><main class="wrap"><div class="skill">pm-metrics</div><h1>指标与复盘：有分母、有口径、有缺失边界</h1><div class="intro">统一场景：回声，一款面向小型产品团队的反馈整理工具。</div><div class="status">合成数据 · Python 实际计算</div><article class="document"><h1>回声：首版指标方案与一次样例复盘</h1>
+<p>本页使用 8 条合成反馈演示计数；没有生产数据或分类模型基准测试结果。分类分布为本次按规则设定的演示输入，不能当作模型准确率。</p>
+<h2>这批输入告诉了我们什么</h2>
+<p>F001、F003 为缺陷，F002、F006 为功能建议，F004 为体验问题，F005 为价格反馈；F007、F008 待判断。两条缺陷关联同一问题，但分母仍是 8 条反馈。初始均未人工确认。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>本批口径</th>
+<th style="text-align: right;">演示值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>建议可分类率</td>
+<td>非待判断的建议数 ÷ 输入反馈数</td>
+<td style="text-align: right;">6 / 8 = 75%</td>
+</tr>
+<tr>
+<td>待判断率</td>
+<td>待判断的建议数 ÷ 输入反馈数</td>
+<td style="text-align: right;">2 / 8 = 25%</td>
+</tr>
+<tr>
+<td>导出就绪率</td>
+<td>当前已确认且分类有效的反馈数 ÷ 输入反馈数</td>
+<td style="text-align: right;">0 / 8 = 0%</td>
+</tr>
+<tr>
+<td>人工改分类率</td>
+<td>已确认且最终分类不同于初始建议的反馈数 ÷ 已确认反馈数</td>
+<td style="text-align: right;">0 / 0：未定义</td>
+</tr>
+</tbody>
+</table>
+<p>以上比例已实际调用包内 <code>metric_math.py</code> 计算。75% 只表示有明确分类建议；0% 只描述尚未确认的初始状态。两者都不能证明工具好用或不好用。F007 应保留信息缺口，F008 应隔离输入指令；不该为了提高覆盖率强行归类。</p>
+<h2>上线后的测量口径</h2>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>用途与定义</th>
+<th>窗口、方向与目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>批次导出完成率</td>
+<td>导入当日创建的批次中，24 小时内生成过非空确认结果文件的批次数 ÷ 有效导入批次数</td>
+<td>按导入日形成 cohort，满 24 小时再统计；Asia/Shanghai；越高通常越好，目标待试用基线</td>
+</tr>
+<tr>
+<td>首次导出耗时</td>
+<td>批次首次成功生成文件时间 − 导入成功时间</td>
+<td>同 cohort；仅完成者报告中位数，同时展示未完成比例，避免只看快的人</td>
+</tr>
+<tr>
+<td>未确认项泄漏数</td>
+<td>成功生成的文件快照中，生成当时不满足确认规则的行数</td>
+<td>按自然日汇总；需求要求为 0，有一条即核查</td>
+</tr>
+</tbody>
+</table>
+<p>目前这些指标均“未采集”，不能填 0；导出完成也只代表生成文件，不代表研发已采用需求。</p>
+<h2>最小事件契约</h2>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>触发时机与必填属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>batch_imported</code></td>
+<td>有效记录写入成功：<code>batch_id</code>、<code>accepted_count</code></td>
+</tr>
+<tr>
+<td><code>suggestions_ready</code></td>
+<td>建议通过枚举和 ID 校验并保存：<code>batch_id</code>、各分类计数、<code>suggestion_version</code></td>
+</tr>
+<tr>
+<td><code>review_changed</code></td>
+<td>人工改分类或确认状态保存成功：<code>feedback_id</code>、前后分类、前后确认状态、<code>record_version</code></td>
+</tr>
+<tr>
+<td><code>export_generated</code></td>
+<td>CSV 构造成功：<code>export_id</code>、<code>batch_id</code>、快照版本、行数、违规行数；生成失败另记 <code>export_failed</code> 与错误码</td>
+</tr>
+</tbody>
+</table>
+<p>所有事件带唯一 <code>event_id</code>、UTC 时间与 <code>schema_version</code>；展示时转换时区。重试去重，不把点击记成成功，不上传原始反馈正文。验收先重放 PRD 的“确认两条→修改一条→再次导出”：两次文件应分别为 2 行、1 行，违规行数均为 0。下一步先验证这条闭环能否可信计数，再用真实试用数据判断卡点；本次不作准确率、提升率或 A/B 结论。</p></article><footer><span>Codex 直接读取本地 Skill 与参考文件后生成 · 文档排版截图</span><code>06-指标与复盘.md</code></footer></main></body></html>

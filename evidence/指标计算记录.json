@@ -1,0 +1,68 @@
+{
+  "data_kind": "synthetic_demo",
+  "calculator": "scripts/metric_math.py",
+  "results": [
+    {
+      "name": "建议可分类率",
+      "input": {
+        "operation": "ratio",
+        "numerator": 6,
+        "denominator": 8
+      },
+      "output": {
+        "operation": "ratio",
+        "status": "ok",
+        "ratio": 0.75,
+        "percent": 75.0
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "待判断率",
+      "input": {
+        "operation": "ratio",
+        "numerator": 2,
+        "denominator": 8
+      },
+      "output": {
+        "operation": "ratio",
+        "status": "ok",
+        "ratio": 0.25,
+        "percent": 25.0
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "导出就绪率",
+      "input": {
+        "operation": "ratio",
+        "numerator": 0,
+        "denominator": 8
+      },
+      "output": {
+        "operation": "ratio",
+        "status": "ok",
+        "ratio": 0.0,
+        "percent": 0.0
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "人工改分类率",
+      "input": {
+        "operation": "ratio",
+        "numerator": 0,
+        "denominator": 0
+      },
+      "output": {
+        "operation": "ratio",
+        "status": "undefined",
+        "ratio": null,
+        "percent": null,
+        "reason": "zero_denominator"
+      },
+      "exit_code": 0
+    }
+  ],
+  "calculator_sha256": "cdc18c2e9a94ce5d15d922fd7d59accba6de2b44e01a2ee74aad3165809f6f23"
+}

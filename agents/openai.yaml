@@ -1,0 +1,4 @@
+interface:
+  display_name: "产品指标与复盘"
+  short_description: "统一指标与埋点口径，分析真实数据和实验结果，形成可复核业务复盘"
+  default_prompt: "使用 $pm-metrics 依据我的业务背景和真实数据，检查指标口径，完成所需计算或复盘，并明确证据与限制。"

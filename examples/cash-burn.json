@@ -1,0 +1,6 @@
+{
+  "operation": "cash_runway",
+  "cash": 360000,
+  "monthly_cash_in": 20000,
+  "monthly_cash_out": 80000
+}

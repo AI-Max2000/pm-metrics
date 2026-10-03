@@ -1,0 +1,12 @@
+pm-metrics
+Copyright 2026 AI Max
+
+This repository contains newly written Chinese consolidation, examples and
+documentation. Its original contributions are licensed under Apache-2.0.
+The consolidation reorganizes workflows and changes the scope and operational
+assumptions of referenced methods; see SOURCES.md for specific changes.
+
+Upstream attribution and license texts are retained in SOURCES.md and licenses/.
+Those notices and permissions remain in effect. Referenced projects have not
+reviewed or endorsed this repository. Historical user-provided source packages
+are not distributed here and are not relicensed by this repository.

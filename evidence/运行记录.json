@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Asia/Shanghai",
+  "execution_mode": "Codex directly read local SKILL.md and task-specific references, generated concrete artifacts, then reconciled shared contracts. Not an installed auto-trigger test.",
+  "scenario": "回声：用户反馈审核与导出",
+  "business_input_kind": "8 synthetic feedback records, no real customer data",
+  "classifier_mode": "preset category suggestions for UI demonstration; not a model benchmark",
+  "skills": [
+    {
+      "skill": "pm-metrics",
+      "source_sha256": "260218fc5ee3b77be4f70ac616043f2356caa5f2f705898b739ab69f8063a033",
+      "file": "SKILL.md"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "assets/06-metrics.png",
+      "source": "rendered/06-metrics.html",
+      "width": 1280,
+      "height": 1918,
+      "capture": "ego-browser Chromium screenshot, unretouched",
+      "image_sha256": "470a40c6f926c05685f421e15d671e772e10fafb73b0845518ca376040edc668",
+      "source_sha256": "46bc8481885f5a7104b2b24a61881086ac083210d6309a0046fdb45333626ddc"
+    }
+  ],
+  "example": {
+    "file": "examples/06-指标与复盘.md",
+    "sha256": "c5361b9d99397691faa5e5a5cde468fb45eada181e6d8ec1929eebd8e2810af6"
+  },
+  "verification": "样例比例已调用包内 metric_math.py 计算；输入是合成数据，分类分布是演示设定。埋点表是待实施的测量方案，尚无生产采集或 A/B 分析。75% 不是模型准确率，初始 0% 也不是产品质量结论；计算器不采集数据、不建立监控、不执行统计显著性检验。",
+  "not_claimed": [
+    "global skill auto-discovery",
+    "production deployment",
+    "real customer interviews",
+    "classifier accuracy benchmark",
+    "commercial efficiency improvement"
+  ],
+  "arithmetic_checks": {
+    "source": "evidence/指标计算记录.json",
+    "actual_subprocess_runs": 4,
+    "outcomes": [
+      "75%",
+      "25%",
+      "0%",
+      "undefined"
+    ]
+  }
+}
